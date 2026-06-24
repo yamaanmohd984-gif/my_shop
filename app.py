@@ -10,7 +10,7 @@ PRODUCTS = [
         "category": "Cotton",
         "price": "₹1799",
         "image": "cotton_storage_basket.jpg", # <-- Humne naam chota aur sahi kar diya hai
-        "buy_link": "https://amzn.in"
+        "buy_link": "https://amzn.in/d/06k1WkwX"
     },
     {
         "id": 2,
