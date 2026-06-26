@@ -3,228 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craftora International</title>
+    <title>{{ owner.shop_name }} - Premium Handmade Store</title>
+    <!-- Tailwind CSS for Premium Design -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* 🌈 High-End 3D Colorful Background */
-        body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background: radial-gradient(circle at 20% 20%, #fef5e7 0%, #ebf5fb 50%, #f5eef8 100%); 
-            color: #2c3e50; 
+        /* Smooth Scrolling Ads Animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
-        
-        /* 👕 Dynamic 3D Header Layered Design */
-        header { 
-            background: linear-gradient(135deg, #ff416c, #ff4b2b); 
-            color: white; 
-            padding: 50px 20px; 
-            text-align: center; 
-            box-shadow: 0 15px 35px rgba(255, 75, 43, 0.3), inset 0 -8px 0 rgba(0,0,0,0.1); 
-            position: relative; 
-            border-bottom: 5px solid #ffd814;
+        .animate-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 30s linear infinite;
         }
-        header h1 { 
-            margin: 0; 
-            font-size: 46px; 
-            letter-spacing: 2px; 
-            font-weight: 800; 
-            text-shadow: 3px 3px 0px #900c3f, 6px 6px 15px rgba(0,0,0,0.4); 
-            color: #fff; 
-            transform: skewX(-2deg);
-        }
-        header p { 
-            margin: 12px 0 0 0; 
-            font-size: 20px; 
-            opacity: 0.95; 
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-
-        /* 🛒 3D Floating Ticker (Chalti-Firti Cart Bar) */
-        .moving-cart-container { 
-            width: 100%; 
-            overflow: hidden; 
-            background: linear-gradient(0deg, #f1c40f, #f39c12); 
-            padding: 12px 0; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1), inset 0 3px 0 rgba(255,255,255,0.4); 
-            border-bottom: 3px solid #d35400;
-        }
-        .moving-cart { 
-            font-size: 24px; 
-            white-space: nowrap; 
-            display: inline-block; 
-            animation: walkCart 14s linear infinite; 
-            font-weight: bold; 
-            color: #fff; 
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-        
-        @keyframes walkCart {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100vw); }
-        }
-
-        /* 📦 Ultra 3D Layout Layout Container */
-        .container { width: 85%; margin: auto; padding: 40px 0; }
-        
-        /* 💎 Glassmorphism 3D About Box */
-        .contact-card { 
-            background: rgba(255, 255, 255, 0.9); 
-            padding: 30px; 
-            border-radius: 20px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,1); 
-            margin-bottom: 50px; 
-            border-left: 10px solid #ff4b2b; 
-            transform: perspective(1000px) rotateX(1deg);
-        }
-        .contact-card h2 { 
-            margin-top: 0; 
-            color: #ff416c; 
-            font-size: 26px;
-            font-weight: 700;
-        }
-        
-        /* 🛍️ Ultra-3D Grid System */
-        .product-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); 
-            gap: 40px; 
-        }
-        
-        /* 🌟 Epic 3D Isometric Pop Cards */
-        .product-card { 
-            background: #ffffff; 
-            padding: 24px; 
-            border-radius: 24px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.07); 
-            text-align: center; 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            border: 1px solid rgba(0,0,0,0.03);
-            position: relative;
-        }
-        
-        /* 🧡 Alternating Colorful 3D Bottom Bases */
-        .product-card:nth-child(1) { border-bottom: 8px solid #ff416c; }
-        .product-card:nth-child(2) { border-bottom: 8px solid #20bf6b; }
-        .product-card:nth-child(3) { border-bottom: 8px solid #0575e6; }
-        
-        /* 🚀 Crazy 3D Pop Out Effect on Mouse Hover */
-        .product-card:hover { 
-            transform: translateY(-15px) scale(1.03) rotateX(2deg) rotateY(1deg); 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15); 
-        }
-        
-        /* 🖼️ Sharp 3D Framed Images */
-        .product-card img { 
-            max-width: 100%; 
-            height: 240px; 
-            object-fit: cover; 
-            border-radius: 16px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .product-card:hover img {
-            transform: scale(1.02);
-        }
-        
-        /* 🏷️ Text Styles */
-        .product-card h3 { 
-            font-size: 19px; 
-            margin: 20px 0 10px 0; 
-            color: #1a252f; 
-            height: 52px; 
-            overflow: hidden;
-            font-weight: 700;
-        }
-        .category { 
-            font-size: 12px; 
-            color: #ff4b2b; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            background: #ffebe8;
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-        }
-        .product-card:nth-child(even) .category {
-            color: #20bf6b;
-            background: #e8f9f0;
-        }
-        
-        /* 💰 Heavy 3D Text Price Tag */
-        .price { 
-            color: #b12704; 
-            font-size: 26px; 
-            font-weight: 800; 
-            margin: 15px 0;
-            text-shadow: 1px 1px 0px #eee;
-        }
-        
-        /* 🛒 Ultimate 3D Push Button Effect */
-        .btn-buy { 
-            display: inline-block; 
-            background: linear-gradient(180deg, #ffe033 0%, #f39c12 100%); 
-            color: #111; 
-            padding: 14px 35px; 
-            text-decoration: none; 
-            border-radius: 30px; 
-            font-weight: bold; 
-            font-size: 16px;
-            box-shadow: 0 5px 0 #b37d14, 0 8px 15px rgba(0,0,0,0.15); 
-            transition: all 0.1s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        /* Button Push Animation (Dabne wala effect!) */
-        .btn-buy:active { 
-            transform: translateY(4px); 
-            box-shadow: 0 1px 0 #b37d14, 0 3px 5px rgba(0,0,0,0.1); 
-        }
-        .btn-buy:hover { 
-            background: linear-gradient(180deg, #fff055 0%, #f5b041 100%); 
-            cursor: pointer; 
+        .animate-scroll:hover {
+            animation-play-state: paused;
         }
     </style>
 </head>
-<body>
+<body class="bg-amber-50 text-stone-800 font-sans">
 
-    <!-- 🌟 Ultra-Premium 3D Header -->
-    <header>
-        <h1>Craftora International</h1>
-        <p>Global Luxury Handmade Creativity For Modern Homes</p>
+    <!-- 1. HEADER & NAVIGATION -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="bg-amber-700 text-white text-center py-2 text-sm font-semibold tracking-wide">
+            🌟 MID-SEASON SALE | UP TO 40% OFF CRAFTORA SPECIALS!
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tight text-amber-900">{{ owner.shop_name }}</h1>
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="#" class="text-amber-700 border-b-2 border-amber-700 pb-1">Home</a>
+                <a href="#" class="text-stone-600 hover:text-amber-700 transition">Shop</a>
+                <a href="#" class="text-stone-600 hover:text-amber-700 transition">Jute Collection</a>
+                <a href="#" class="text-stone-600 hover:text-amber-700 transition">Cotton Specials</a>
+            </nav>
+            <div class="flex space-x-4 text-stone-600">
+                <i class="fa-solid class= fa-magnifying-glass cursor-pointer hover:text-amber-700"></i>
+                <i class="fa-solid fa-user cursor-pointer hover:text-amber-700"></i>
+                <i class="fa-solid fa-heart cursor-pointer hover:text-amber-700"></i>
+            </div>
+        </div>
     </header>
 
-    <!-- 🛒 CHALTI-FIRTI 3D CART BAR -->
-    <div class="moving-cart-container">
-        <div class="moving-cart">🏃‍♂️💨 🛒 Welcome to Craftora International! Explore Premium Handmade Jute Coasters, Baskets 🧺 & Royal Home Decor Items... 🛍️🏃‍♀️💨 🛒</div>
-    </div>
+    <!-- 2. HERO BANNER (As per your image reference) -->
+    <section class="relative bg-stone-900 text-white overflow-hidden h-[450px] flex items-center">
+        <div class="absolute inset-0 opacity-40 bg-[url('https://unsplash.com')] bg-cover bg-center"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+            <span class="text-amber-400 font-semibold uppercase tracking-widest text-sm">Handmade Essentials</span>
+            <h2 class="text-4xl md:text-6xl font-serif font-bold mt-2 mb-4 max-w-xl leading-tight">Update Your Home. <br>Shop New Collection</h2>
+            <div class="flex space-x-4">
+                <a href="#shop" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded transition uppercase text-sm">Shop Jute</a>
+                <a href="#shop" class="bg-white hover:bg-stone-100 text-stone-950 font-semibold px-6 py-3 rounded transition uppercase text-sm">Shop Cotton</a>
+            </div>
+        </div>
+    </section>
 
-    <div class="container">
-        <!-- 💎 Glassmorphism About Box -->
-        <div class="contact-card">
-            <h2>About Our Craftsmanship & Brand</h2>
-            <p style="font-size: 17px; line-height: 1.7; color: #4b5563;">{{ owner.about }}</p>
-            <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 25px 0;">
-            <p style="margin: 0; font-size: 16px; color: #1f2937;"><strong>📧 Global Support:</strong> {{ owner.email }} | <strong>📞 Direct Line:</strong> {{ owner.phone }}</p>
+    <!-- 3. AUTO-SCROLLING JUTE ADS & TRUST SLIDER (10 Trust Points) -->
+    <section class="bg-amber-100 border-y border-amber-200 py-4 overflow-hidden whitespace-nowrap">
+        <div class="animate-scroll flex items-center space-x-12">
+            <!-- Set 1 of 10 Ads -->
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-leaf text-green-600"></i> 100% Natural Eco-Friendly Jute</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-hand-holding-heart text-amber-600"></i> Expertly Handcrafted with Love</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-shield-halved text-blue-600"></i> Highly Durable & Long Lasting</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-certificate text-yellow-600"></i> 100% Original Craftora Quality</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-recycle text-emerald-600"></i> Biodegradable & Sustainable</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-seedling text-green-500"></i> Chemical-Free Processing</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-sparkles text-amber-500"></i> Premium Texture & Unique Designs</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-house-chimney text-orange-600"></i> Perfect for Ethnic & Modern Decor</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-indian-rupee-sign text-stone-700"></i> Direct from Local Artisans (Vocal for Local)</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-check-double text-green-700"></i> Premium Quality Checked Items</span>
+
+            <!-- Set 2 (Duplicate for Seamless Loop Animation) -->
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-leaf text-green-600"></i> 100% Natural Eco-Friendly Jute</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-hand-holding-heart text-amber-600"></i> Expertly Handcrafted with Love</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-shield-halved text-blue-600"></i> Highly Durable & Long Lasting</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-certificate text-yellow-600"></i> 100% Original Craftora Quality</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-recycle text-emerald-600"></i> Biodegradable & Sustainable</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-seedling text-green-500"></i> Chemical-Free Processing</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-sparkles text-amber-500"></i> Premium Texture & Unique Designs</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-house-chimney text-orange-600"></i> Perfect for Ethnic & Modern Decor</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-indian-rupee-sign text-stone-700"></i> Direct from Local Artisans (Vocal for Local)</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-check-double text-green-700"></i> Premium Quality Checked Items</span>
+        </div>
+    </section>
+
+    <!-- 4. PREMIUM PRODUCT GRID (As per image layout) -->
+    <main id="shop" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-10">
+            <h3 class="text-3xl font-serif font-bold text-stone-900 tracking-tight">Our Premium Products</h3>
+            <div class="h-1 w-20 bg-amber-600 mx-auto mt-3"></div>
         </div>
 
-        <!-- Products Section -->
-        <h2 style="color: #ff416c; margin-bottom: 35px; font-size: 28px; font-weight: 800; text-shadow: 1px 1px 0px #fff;">Featured Masterpieces</h2>
-        <div class="product-grid">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {% for product in products %}
-            <div class="product-card">
-                <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
-                <h3>{{ product.name }}</h3>
-                <div class="category">{{ product.category }} Collection</div>
-                <div class="price">{{ product.price }}</div>
-                <a href="{{ product.buy_link }}" target="_blank" class="btn-buy">Buy From Amazon</a>
+            <div class="bg-white rounded-lg shadow-sm border border-stone-100 overflow-hidden flex flex-col group hover:shadow-md transition duration-300">
+                <!-- Product Image Area -->
+                <div class="bg-stone-50 h-64 overflow-hidden relative flex items-center justify-center p-4">
+                    <img src="/static/images/{{ product.image }}" alt="{{ product.name }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500">
+                    <span class="absolute top-3 left-3 bg-amber-600 text-white text-xs px-2 py-1 rounded font-semibold tracking-wider uppercase shadow-sm">
+                        {{ product.category }}
+                    </span>
+                </div>
+
+                <!-- Product Details -->
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-stone-800 font-medium text-sm line-clamp-2 min-h-[40px] group-hover:text-amber-700 transition">
+                            {{ product.name }}
+                        </h4>
+                        <!-- Stars Rating for Premium Look -->
+                        <div class="text-amber-500 text-xs my-2">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="text-stone-400 text-[11px] ml-1">(5.0)</span>
+                        </div>
+                        <p class="text-amber-900 font-bold text-lg mt-1">₹{{ product.price }}</p>
+                    </div>
+                    
+                    <!-- Premium Amazon Action Button -->
+                    <a href="{{ product.buy_link }}" target="_blank" class="mt-4 w-full bg-stone-900 hover:bg-amber-700 text-white text-center text-xs font-semibold py-3 px-4 rounded tracking-wider uppercase transition shadow-sm flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-amazon text-sm"></i> Buy From Amazon
+                    </a>
+                </div>
             </div>
             {% endfor %}
         </div>
-    </div>
-
-</body>
-</html>
+    </main>
+    <!-- 5. NEWSLETTER -->
+     
