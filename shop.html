@@ -3,265 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craftora International</title>
+    <title>{{ owner.shop_name }} - Premium Handmade Store</title>
+    <!-- Tailwind CSS for Premium Design -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* 🎨 Core Variables & Reset */
-        :root {
-            --primary-dark: #130F0D;
-            --accent-terracotta: #A0522D;
-            --bg-light: #FBFBFA;
-            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        /* Smooth Scrolling Ads Animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
-
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: var(--bg-light); 
-            color: var(--primary-dark);
-        }
-
-        /* 🎪 1. AUTOMATIC TOP IMAGE ADS SLIDER (Had se zyada premium!) */
-        .slider-wrapper {
-            width: 100%;
-            height: 180px; /* Photo ke liye height thodi badi ki hai */
-            background-color: #111;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .slider-container {
+        .animate-scroll {
             display: flex;
-            width: 1000%; /* 10 Ads ke liye space */
-            height: 100%;
-            animation: autoScrollAds 35s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            width: max-content;
+            animation: scroll 30s linear infinite;
         }
-
-        .ad-slide {
-            width: 10%; /* Har ad poori width lega */
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-align: center;
-            color: #ffffff;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-            padding: 0 20px;
-            box-sizing: border-box;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        /* Photo ke upar text saaf dikhne ke liye dark parda */
-        .ad-slide::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.45);
-            z-index: 1;
-        }
-        
-        .ad-slide span {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* 🔄 10 Ads Auto-Scroll Animation (Har Slide 3.5 Second Rukegi) */
-        @keyframes autoScrollAds {
-            0%, 9% { transform: translateX(0%); }
-            10%, 19% { transform: translateX(-10%); }
-            20%, 29% { transform: translateX(-20%); }
-            30%, 39% { transform: translateX(-30%); }
-            40%, 49% { transform: translateX(-40%); }
-            50%, 59% { transform: translateX(-50%); }
-            60%, 69% { transform: translateX(-60%); }
-            70%, 79% { transform: translateX(-70%); }
-            80%, 89% { transform: translateX(-80%); }
-            90%, 99% { transform: translateX(-90%); }
-            100% { transform: translateX(0%); }
-        }
-
-        /* 👕 Urban Minimalist Header */
-        header { 
-            background: #ffffff; 
-            padding: 25px 15px; 
-            text-align: center; 
-            border-bottom: 1px solid #eaeaea;
-        }
-        header h1 { 
-            margin: 0; 
-            font-size: 32px; 
-            letter-spacing: 3px; 
-            font-weight: 800; 
-            text-transform: uppercase;
-        }
-        header p { 
-            margin: 6px 0 0 0; 
-            font-size: 14px; 
-            opacity: 0.7; 
-            letter-spacing: 1px;
-        }
-
-        /* 🛒 Sliding Ticker Bar (Chalta-Firti Cart Bar) */
-        .moving-cart-container { 
-            width: 100%; 
-            overflow: hidden; 
-            background: #fff0b3; 
-            padding: 8px 0; 
-            border-bottom: 1px solid #ffe066;
-        }
-        .moving-cart { 
-            font-size: 14px; 
-            white-space: nowrap; 
-            display: inline-block; 
-            animation: walkCart 15s linear infinite; 
-            font-weight: 600; 
-            color: #5c4300; 
-        }
-        @keyframes walkCart {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100vw); }
-        }
-
-        /* 📦 Main Container */
-        .container { 
-            width: 92%; 
-            max-width: 1200px; 
-            margin: auto; 
-            padding: 20px 0; 
-        }
-
-        /* 🎯 Section Heading */
-        .section-title {
-            font-size: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-align: center;
-            margin: 30px 0 20px 0;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 2px;
-            background: var(--primary-dark);
-            margin: 6px auto 0 auto;
-        }
-        
-        /* 🛍️ Responsive Mobile Product Grid */
-        .product-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 15px; 
-        }
-        
-        @media (min-width: 768px) {
-            .product-grid { grid-template-columns: repeat(4, 1fr); gap: 25px; }
-            header h1 { font-size: 40px; }
-            .container { width: 85%; }
-        }
-        
-        /* 🧥 Modern Clean Product Cards */
-        .product-card { 
-            background: #ffffff; 
-            padding: 12px; 
-            border-radius: 4px; 
-            box-shadow: var(--card-shadow); 
-            text-align: center; 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border: 1px solid #f0f0f0;
-            transition: transform 0.2s ease;
-        }
-        .product-card:hover {
-            transform: translateY(-4px);
-        }
-        
-        .product-card img { 
-            width: 100%; 
-            height: 160px; 
-            object-fit: cover; 
-            border-radius: 2px;
-            background-color: #f7f7f7;
-        }
-        @media (min-width: 768px) { .product-card img { height: 220px; } }
-        
-        .product-card h3 { 
-            font-size: 13px; 
-            margin: 10px 0 4px 0; 
-            color: var(--primary-dark); 
-            font-weight: 600;
-            height: 36px; 
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-        
-        .category { 
-            font-size: 11px; 
-            color: #777; 
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-        
-        .price { 
-            color: var(--primary-dark); 
-            font-size: 15px; 
-            font-weight: 700; 
-            margin-bottom: 10px;
-        }
-        
-        .btn-buy { 
-            display: block; 
-            background-color: var(--primary-dark); 
-            color: #ffffff; 
-            padding: 8px 5px; 
-            text-decoration: none; 
-            border-radius: 2px; 
-            font-weight: 600; 
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .animate-scroll:hover {
+            animation-play-state: paused;
         }
     </style>
 </head>
-<body>
+<body class="bg-amber-50 text-stone-800 font-sans">
 
-    <!-- 🎪 10 AUTOMATIC SCROLLING IMAGE ADS BAR (Internet photos connected!) -->
-    <div class="slider-wrapper">
-        <div class="slider-container">
-            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/handmade-colourful-bamboo-basket-for-sale-in-pune-india-stylish-interior-item-eco-gm2247110983-661029438');"><span>🎨 Custom Sizes & Creative Fancy Designs Available 🎨</span></div>
-            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/hardwood-floor-with-jute-doormat-shoes-and-flower-pot-and-seagrass-laundry-basket-by-gm1311958067-400902688');"><span>🔥 Special Jute Workshop Coming Soon! Register Now 🧺</span></div>
-            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/cacao-nibs-in-a-basket-gm1156610275-315280868');"><span>✨ 100% Eco-Friendly Pure Handmade Home Decor ✨</span></div>
-            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/vector/jute-icons-set-cartoon-vector-canvas-hessian-gm2191849080-610154324');"><span>📦 Free Shipping Nationwide On Orders Above ₹999 📦</span></div>
-            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/mango-fruits-in-wooden-basket-with-leaf-after-harvest-from-farm-mango-fruits-with-gm1320601259-407106501');"><span>🌟 Premium Quality Boho Art Wall Hanging Collection 🌟</span></div>
-            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/macrame-cotton-and-hemp-ropes-in-skeins-gm1160541088-317688074');"><span>💎 Call To Order Direct: +91 8630850116, 7037380116 💎</span></div>
-            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/zero-waste-concept-in-home-kitchen-gm1203026518-345609501');"><span>🛍️ Best Sellers - Premium Leather Handle Baskets 🛍️</span></div>
-            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/handmade-colourful-bamboo-basket-for-sale-in-pune-india-stylish-interior-item-eco-gm2247110983-661029438');"><span>🌿 Sustainable Art For Earth-Loving Modern Homes 🌿</span></div>
-            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/jute-rope-bag-basket-natural-jute-coaster-cozy-crocheted-basket-of-jute-eco-friendly-gm1441180149-480949708');"><span>💯 Trusted Craftsmanship Built With Global Standards 💯</span></div>
-            <div class="ad-slide" style="background-image: url('https://www.istockphoto.com/photo/a-brown-basket-woven-from-natural-materials-gm1257784406-368725337');"><span>✨ Follow Us On Instagram @CRAFT_EMPORIUM ✨</span></div>
+    <!-- 1. HEADER & NAVIGATION -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="bg-amber-700 text-white text-center py-2 text-sm font-semibold tracking-wide">
+            🌟 MID-SEASON SALE | UP TO 40% OFF CRAFTORA SPECIALS!
         </div>
-    </div>
-
-    <!-- 👕 Minimalist Header -->
-    <header>
-        <h1>Craftora International</h1>
-        <p>Global Luxury Handmade Creativity For Modern Homes</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tight text-amber-900">{{ owner.shop_name }}</h1>
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="#" class="text-amber-700 border-b-2 border-amber-700 pb-1">Home</a>
+                <a href="#" class="text-stone-600 hover:text-amber-700 transition">Shop</a>
+                <a href="#" class="text-stone-600 hover:text-amber-700 transition">Jute Collection</a>
+                <a href="#" class="text-stone-600 hover:text-amber-700 transition">Cotton Specials</a>
+            </nav>
+            <div class="flex space-x-4 text-stone-600">
+                <i class="fa-solid class= fa-magnifying-glass cursor-pointer hover:text-amber-700"></i>
+                <i class="fa-solid fa-user cursor-pointer hover:text-amber-700"></i>
+                <i class="fa-solid fa-heart cursor-pointer hover:text-amber-700"></i>
+            </div>
+        </div>
     </header>
 
-    <!-- 🛒 Chalti-Firti Cart Bar -->
-    <div class="moving-cart-container">
-        <div class="moving-cart">运行 🛒 Welcome to Craftora International! Check Out Premium Jute Coasters, Royal Baskets 🧺 & Royal Home Decor Art... 🛍️</div>
-    </div>
+    <!-- 2. HERO BANNER (As per your image reference) -->
+    <section class="relative bg-stone-900 text-white overflow-hidden h-[450px] flex items-center">
+        <div class="absolute inset-0 opacity-40 bg-[url('https://unsplash.com')] bg-cover bg-center"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+            <span class="text-amber-400 font-semibold uppercase tracking-widest text-sm">Handmade Essentials</span>
+            <h2 class="text-4xl md:text-6xl font-serif font-bold mt-2 mb-4 max-w-xl leading-tight">Update Your Home. <br>Shop New Collection</h2>
+            <div class="flex space-x-4">
+                <a href="#shop" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3 rounded transition uppercase text-sm">Shop Jute</a>
+                <a href="#shop" class="bg-white hover:bg-stone-100 text-stone-950 font-semibold px-6 py-3 rounded transition uppercase text-sm">Shop Cotton</a>
+            </div>
+        </div>
+    </section>
 
-    <div class="container">
-        <!-- Products Section -->
+    <!-- 3. AUTO-SCROLLING JUTE ADS & TRUST SLIDER (10 Trust Points) -->
+    <section class="bg-amber-100 border-y border-amber-200 py-4 overflow-hidden whitespace-nowrap">
+        <div class="animate-scroll flex items-center space-x-12">
+            <!-- Set 1 of 10 Ads -->
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-leaf text-green-600"></i> 100% Natural Eco-Friendly Jute</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-hand-holding-heart text-amber-600"></i> Expertly Handcrafted with Love</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-shield-halved text-blue-600"></i> Highly Durable & Long Lasting</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-certificate text-yellow-600"></i> 100% Original Craftora Quality</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-recycle text-emerald-600"></i> Biodegradable & Sustainable</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-seedling text-green-500"></i> Chemical-Free Processing</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-sparkles text-amber-500"></i> Premium Texture & Unique Designs</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-house-chimney text-orange-600"></i> Perfect for Ethnic & Modern Decor</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-indian-rupee-sign text-stone-700"></i> Direct from Local Artisans (Vocal for Local)</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-check-double text-green-700"></i> Premium Quality Checked Items</span>
+
+            <!-- Set 2 (Duplicate for Seamless Loop Animation) -->
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-leaf text-green-600"></i> 100% Natural Eco-Friendly Jute</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-hand-holding-heart text-amber-600"></i> Expertly Handcrafted with Love</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-shield-halved text-blue-600"></i> Highly Durable & Long Lasting</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-certificate text-yellow-600"></i> 100% Original Craftora Quality</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-recycle text-emerald-600"></i> Biodegradable & Sustainable</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-seedling text-green-500"></i> Chemical-Free Processing</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-sparkles text-amber-500"></i> Premium Texture & Unique Designs</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-house-chimney text-orange-600"></i> Perfect for Ethnic & Modern Decor</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-indian-rupee-sign text-stone-700"></i> Direct from Local Artisans (Vocal for Local)</span>
+            <span class="flex items-center text-amber-900 font-medium text-sm gap-2"><i class="fa-solid fa-check-double text-green-700"></i> Premium Quality Checked Items</span>
+        </div>
+    </section>
+
+    <!-- 4. PREMIUM PRODUCT GRID (As per image layout) -->
+    <main id="shop" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center mb-10">
+            <h3 class="text-3xl font-serif font-bold text-stone-900 tracking-tight">Our Premium Products</h3>
+            <div class="h-1 w-20 bg-amber-600 mx-auto mt-3"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {% for product in products %}
+            <div class="bg-white rounded-lg shadow-sm border border-stone-100 overflow-hidden flex flex-col group hover:shadow-md transition duration-300">
+                <!-- Product Image Area -->
+                <div class="bg-stone-50 h-64 overflow-hidden relative flex items-center justify-center p-4">
+                    <img src="/static/images/{{ product.image }}" alt="{{ product.name }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500">
+                    <span class="absolute top-3 left-3 bg-amber-600 text-white text-xs px-2 py-1 rounded font-semibold tracking-wider uppercase shadow-sm">
+                        {{ product.category }}
+                    </span>
+                </div>
+
+                <!-- Product Details -->
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-stone-800 font-medium text-sm line-clamp-2 min-h-[40px] group-hover:text-amber-700 transition">
+                            {{ product.name }}
+                        </h4>
+                        <!-- Stars Rating for Premium Look -->
+                        <div class="text-amber-500 text-xs my-2">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="text-stone-400 text-[11px] ml-1">(5.0)</span>
+                        </div>
+                        <p class="text-amber-900 font-bold text-lg mt-1">₹{{ product.price }}</p>
+                    </div>
+                    
+                    <!-- Premium Amazon Action Button -->
+                    <a href="{{ product.buy_link }}" target="_blank" class="mt-4 w-full bg-stone-900 hover:bg-amber-700 text-white text-center text-xs font-semibold py-3 px-4 rounded tracking-wider uppercase transition shadow-sm flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-amazon text-sm"></i> Buy From Amazon
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+    <!-- 5. NEWSLETTER -->
+     
