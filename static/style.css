@@ -224,36 +224,13 @@ header nav a:hover {
     position: absolute;
     top: 15px;
     left: 25px;
-    background-color: #ffffff;
+    background-color: white;
     color: #000000;
     padding: 4px 12px;
     font-size: 10px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-.product-text-details {
-    margin-top: 15px;
-}
-
-.product-card h3 {
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
-}
-
-.product-card .collection {
-    font-size: 13px;
-    color: #666666;
-    margin-bottom: 12px;
-}
-
-.product-card .price {
-    font-size: 19px;
-    color: #ffffff;
-    font-weight: bold;
 }
 
 .btn-add-link {
@@ -318,4 +295,97 @@ footer .copy {
     margin-top: 25px;
     font-size: 12px;
     color: #444444;
+}
+
+.product-card{
+    background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20260101/pngtree-black-and-white-nike-shoes-on-dark-surface-image_20983505.webp');
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 25px;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 📱 MOBILE RESPONSIVE CODE - ONLY ADDS NEW RULES FOR SMALL SCREENS 📱 */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 5%;
+        text-align: center;
+    }
+    header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+    header nav a {
+        margin-left: 0;
+        font-size: 13px;
+    }
+    .hero {
+        height: auto;
+        padding: 80px 15px;
+        background-attachment: scroll; /* Mobile par parallax lag handle karne ke liye */
+    }
+    .hero-content h1 {
+        font-size: 36px;
+        letter-spacing: 2px;
+    }
+    .hero-content p {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+    .btn {
+        padding: 12px 28px;
+        font-size: 14px;
+    }
+    .category-buttons-section {
+        padding: 30px 5%;
+    }
+    .category-btn-grid {
+        gap: 10px;
+    }
+    .cat-btn {
+        width: 100%; /* Mobile par full width buttons */
+        text-align: center;
+        padding: 12px 15px;
+    }
+    .features {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 25px 5%;
+        gap: 20px;
+    }
+    .products-section {
+        padding: 50px 5%;
+    }
+    .products-section h2 {
+        font-size: 24px;
+    }
+    .section-subtitle {
+        margin-bottom: 35px;
+        font-size: 13px;
+    }
+    .product-grid {
+        grid-template-columns: 1fr; /* Single column grid for mobile layout */
+        gap: 25px;
+    }
+    .product-card {
+        padding: 35px 20px 20px 20px;
+        min-height: 230px;
+    }
+    .category-header {
+        padding: 40px 15px 20px 15px;
+    }
+    .category-header h1 {
+        font-size: 26px;
+    }
+    footer {
+        padding: 40px 5%;
+    }
 }
